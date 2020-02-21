@@ -24,23 +24,23 @@ public class MainActivity extends AppCompatActivity {
         mainVp = findViewById(R.id.main_vp);
         mainTab = findViewById(R.id.main_tab);
         TabLayout.Tab tab = mainTab.newTab();
-        tab.setText("1");
+        tab.setIcon(R.mipmap.show);
         mainTab.addTab(tab);
 
         tab = mainTab.newTab();
-        tab.setText("2");
+        tab.setIcon(R.mipmap.a1);
         mainTab.addTab(tab);
 
         tab = mainTab.newTab();
-        tab.setText("3");
+        tab.setIcon(R.mipmap.a2);
         mainTab.addTab(tab);
 
         tab = mainTab.newTab();
-        tab.setText("4");
+        tab.setIcon(R.mipmap.a3);
         mainTab.addTab(tab);
 
         tab = mainTab.newTab();
-        tab.setText("5");
+        tab.setIcon(R.mipmap.a4);
         mainTab.addTab(tab);
         //创建 vp的适配器
         MyViewPagerFragmentAdapter myViewPagerFragmentAdapter = new MyViewPagerFragmentAdapter(getSupportFragmentManager());

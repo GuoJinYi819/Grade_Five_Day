@@ -46,7 +46,7 @@ public class Home_Fragment extends Fragment {
             public boolean onLongClick(View v) {
 
                 //识别二维码
-                CodeUtils.analyzeBitmap("", new CodeUtils.AnalyzeCallback() {
+                CodeUtils.analyzeBitmap(content, new CodeUtils.AnalyzeCallback() {
                     @Override
                     public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
                         Toast.makeText(getContext(), "二维码的信息是："+result, Toast.LENGTH_SHORT).show();
