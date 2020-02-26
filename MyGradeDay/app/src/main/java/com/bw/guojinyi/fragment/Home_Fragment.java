@@ -12,8 +12,29 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.bw.guojinyi.R;
+import com.bw.guojinyi.base.BaseFragment;
+import com.bw.guojinyi.bean.BannerBean;
+import com.bw.guojinyi.bean.DataBean;
+import com.bw.guojinyi.bean.Objects;
+import com.bw.guojinyi.bean.ResultBean;
+import com.bw.guojinyi.bean.RxxpBean;
+import com.bw.guojinyi.mvp.BannerPresenterImpl;
+import com.bw.guojinyi.mvp.IBannerContract;
+import com.bw.guojinyi.net.ApiService;
+import com.bw.guojinyi.net.RetrofitUtil;
+import com.stx.xhb.xbanner.XBanner;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * ClassName: MyGradeDay
@@ -22,20 +43,19 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
  * @version 创建时间：2020/2/21 13:43
  * @Description: 用途：完成特定功能
  */
-public class Home_Fragment extends Fragment {
+public class Home_Fragment extends BaseFragment<BannerPresenterImpl> implements IBannerContract.IBannerView {
 
-    private View view;
 
-    @Nullable
+    private XBanner xbanner;
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = View.inflate(getContext(), R.layout.fragment_home, null);
-        return view;
+    protected int initLayoutId() {
+        return R.layout.fragment_home;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void initView() {
+        xbanner = view.findViewById(R.id.home_xbanner);
         ImageView imgQrCode = view.findViewById(R.id.imgQrCode);
         //生成二维码
         final String content = "郭金沂";
@@ -60,5 +80,62 @@ public class Home_Fragment extends Fragment {
                 return true;
             }
         });
+
+
+    }
+
+    @Override
+    protected void initData() {
+        presenter.getData();
+        presenter.getData();
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected BannerPresenterImpl initPresenter() {
+        return new BannerPresenterImpl();
+    }
+
+    @Override
+    public void onSuccess(BannerBean bannerBean) {
+            //xbanner
+        final ArrayList<String> strings = new ArrayList<>();
+        final List<ResultBean> result = bannerBean.getResult();
+        for (int i = 0; i < result.size(); i++) {
+            strings.add(result.get(i).getImageUrl());
+        }
+
+        xbanner.setData(strings,null);
+        xbanner.setmAdapter(new XBanner.XBannerAdapter() {
+            @Override
+            public void loadBanner(XBanner banner, Object model, View view, int position) {
+                Glide.with(getContext())
+                        .load(strings.get(position))
+                        .into((ImageView) view);
+            }
+        });
+        xbanner.setmAutoPalyTime(2000);
+
+//        RetrofitUtil retrofitUtil =  RetrofitUtil.getInstance();
+//        ApiService service = retrofitUtil.createService();
+//        final Observable<DataBean> getgoods = service.getgoods();
+//        getgoods.subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<DataBean>() {
+//                    @Override
+//                    public void accept(DataBean bannerBean) throws Exception {
+//
+//                    }
+//                });
+
+    }
+
+    @Override
+    public void onFailed(String error) {
+
     }
 }
