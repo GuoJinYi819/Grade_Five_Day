@@ -2,9 +2,13 @@ package com.bw.guojinyi.net;
 
 import com.bw.guojinyi.bean.BannerBean;
 import com.bw.guojinyi.bean.DataBean;
+import com.bw.guojinyi.bean.ShoppingBean;
+
+import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.QueryMap;
 
 /**
  * ClassName: MyGradeDay
@@ -19,4 +23,7 @@ public interface ApiService {
 
     @GET("commodity/v1/commodityList")
     Observable<DataBean> getgoods();
+
+    @GET("order/verify/v1/findShoppingCart")
+    Observable<ShoppingBean> getShopping(@QueryMap Map<String,Object> param);
 }

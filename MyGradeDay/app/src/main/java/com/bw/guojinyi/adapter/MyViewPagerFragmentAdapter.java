@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.bw.guojinyi.fragment.Home_Fragment;
 import com.bw.guojinyi.fragment.My_Fragment;
+import com.bw.guojinyi.fragment.Shopping_Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,10 @@ public class MyViewPagerFragmentAdapter extends FragmentPagerAdapter {
 
         my_fragment = new My_Fragment();
         fragmentList.add(my_fragment);
-        my_fragment = new My_Fragment();
-        fragmentList.add(my_fragment);
+
+        Shopping_Fragment shopping_fragment = new Shopping_Fragment();
+        fragmentList.add(shopping_fragment);
+
         my_fragment = new My_Fragment();
         fragmentList.add(my_fragment);
         my_fragment = new My_Fragment();
