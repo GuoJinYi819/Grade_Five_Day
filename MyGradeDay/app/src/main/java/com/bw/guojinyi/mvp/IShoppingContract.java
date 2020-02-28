@@ -2,6 +2,7 @@ package com.bw.guojinyi.mvp;
 
 import com.bw.guojinyi.base.IBaseView;
 import com.bw.guojinyi.bean.BannerBean;
+import com.bw.guojinyi.bean.CartBean;
 import com.bw.guojinyi.bean.ShoppingBean;
 
 import java.util.Map;
@@ -15,17 +16,17 @@ import java.util.Map;
  */
 public interface IShoppingContract {
      interface IBannerView extends IBaseView{
-        void onSuccess(ShoppingBean bannerBean);
+        void onSuccess(CartBean bannerBean);
         void onFailed(String error);
     }
     interface IBannerModule{
-        void getData(Map<String,Object> param, ModuleCallBack moduleCallBack);
+        void getData(ModuleCallBack moduleCallBack);
         interface ModuleCallBack{
-            void onSuccess(ShoppingBean bannerBean);
+            void onSuccess(CartBean bannerBean);
             void onFailed(String error);
         }
     }
     interface IBannerPresenter{
-         void getData(Map<String,Object> param);
+         void getData();
     }
 }

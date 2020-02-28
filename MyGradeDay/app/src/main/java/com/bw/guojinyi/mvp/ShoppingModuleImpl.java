@@ -1,6 +1,7 @@
 package com.bw.guojinyi.mvp;
 
 import com.bw.guojinyi.bean.BannerBean;
+import com.bw.guojinyi.bean.CartBean;
 import com.bw.guojinyi.bean.ShoppingBean;
 import com.bw.guojinyi.net.ApiService;
 import com.bw.guojinyi.net.RetrofitUtil;
@@ -23,20 +24,20 @@ import io.reactivex.schedulers.Schedulers;
 public class ShoppingModuleImpl implements IShoppingContract.IBannerModule {
 
     @Override
-    public void getData(Map<String,Object> param, final ModuleCallBack moduleCallBack) {
+    public void getData(final ModuleCallBack moduleCallBack) {
         RetrofitUtil instance = RetrofitUtil.getInstance();
         ApiService service = instance.createService();
-        Observable<ShoppingBean> observable = service.getShopping(param);
+        Observable<CartBean> observable = service.getShopping();
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ShoppingBean>() {
+                .subscribe(new Observer<CartBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(ShoppingBean value) {
+                    public void onNext(CartBean value) {
                         moduleCallBack.onSuccess(value);
                     }
 

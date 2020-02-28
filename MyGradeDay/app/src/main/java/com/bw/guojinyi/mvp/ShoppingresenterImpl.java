@@ -2,6 +2,7 @@ package com.bw.guojinyi.mvp;
 
 import com.bw.guojinyi.base.BasePresenter;
 import com.bw.guojinyi.bean.BannerBean;
+import com.bw.guojinyi.bean.CartBean;
 import com.bw.guojinyi.bean.ShoppingBean;
 
 import java.util.Map;
@@ -22,10 +23,10 @@ public class ShoppingresenterImpl extends BasePresenter<IShoppingContract.IBanne
 
 
     @Override
-    public void getData(Map<String,Object> param) {
-        module.getData(param, new IShoppingContract.IBannerModule.ModuleCallBack() {
+    public void getData() {
+        module.getData(new IShoppingContract.IBannerModule.ModuleCallBack() {
             @Override
-            public void onSuccess(ShoppingBean bannerBean) {
+            public void onSuccess(CartBean bannerBean) {
                 baseview.onSuccess(bannerBean);
             }
 

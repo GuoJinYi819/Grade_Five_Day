@@ -1,6 +1,7 @@
 package com.bw.guojinyi.net;
 
 import com.bw.guojinyi.bean.BannerBean;
+import com.bw.guojinyi.bean.CartBean;
 import com.bw.guojinyi.bean.DataBean;
 import com.bw.guojinyi.bean.ShoppingBean;
 
@@ -25,5 +26,5 @@ public interface ApiService {
     Observable<DataBean> getgoods();
 
     @GET("order/verify/v1/findShoppingCart")
-    Observable<ShoppingBean> getShopping(@QueryMap Map<String,Object> param);
+    Observable<CartBean> getShopping();
 }

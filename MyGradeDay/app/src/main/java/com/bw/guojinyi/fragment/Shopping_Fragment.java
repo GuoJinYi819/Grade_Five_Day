@@ -9,11 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 
 import com.bw.guojinyi.R;
+import com.bw.guojinyi.adapter.ExpandableAdapter;
 import com.bw.guojinyi.adapter.RecyclerAdapter;
 import com.bw.guojinyi.base.BaseFragment;
+import com.bw.guojinyi.bean.CartBean;
 import com.bw.guojinyi.bean.ShoppingBean;
 import com.bw.guojinyi.mvp.BannerPresenterImpl;
 import com.bw.guojinyi.mvp.IBannerContract;
@@ -21,6 +24,7 @@ import com.bw.guojinyi.mvp.IShoppingContract;
 import com.bw.guojinyi.mvp.ShoppingresenterImpl;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * ClassName: MyGradeDay
@@ -32,6 +36,7 @@ import java.util.HashMap;
 public class Shopping_Fragment extends BaseFragment<ShoppingresenterImpl> implements IShoppingContract.IBannerView {
 
     private RecyclerView recycler;
+    private ExpandableListView expandable_view;
 
     @Override
     protected int initLayoutId() {
@@ -44,19 +49,21 @@ public class Shopping_Fragment extends BaseFragment<ShoppingresenterImpl> implem
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recycler.setLayoutManager(linearLayoutManager);
+
+
+        expandable_view = view.findViewById(R.id.expandable_view);
     }
 
     @Override
     protected void initData() {
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("userId","33417");
-        hashMap.put("sessionId","158279483524733417");
-        presenter.getData(hashMap);
+        presenter.getData();
     }
 
     @Override
     protected void initListener() {
-
+        //设置是厄齐
+//        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getContext());
+//        recycler.setAdapter(recyclerAdapter);
     }
 
     @Override
@@ -65,10 +72,12 @@ public class Shopping_Fragment extends BaseFragment<ShoppingresenterImpl> implem
     }
 
     @Override
-    public void onSuccess(ShoppingBean bannerBean) {
-        //设置是厄齐
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getContext());
-        recycler.setAdapter(recyclerAdapter);
+    public void onSuccess(CartBean bannerBean) {
+        //传传递数U
+        List<CartBean.ResultBean> result = bannerBean.getResult();
+        ExpandableAdapter expandableAdapter = new ExpandableAdapter(result, getContext());
+        expandable_view.setAdapter(expandableAdapter);
+
     }
 
     @Override
