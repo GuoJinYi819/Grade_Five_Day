@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bw.guojinyi.bean.CartBean;
 import com.bw.guojinyi.net.ApiService;
 import com.bw.guojinyi.net.RetrofitUtil;
 
@@ -41,29 +42,29 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("ordeInfo","[{'commodityId':3,'amount':1},{'commodityId':5,'amount':1}]");
+                hashMap.put("orderInfo","[{'commodityId':3,'amount':1},{'commodityId':5,'amount':1}]");
                 hashMap.put("totalPrice","520.55");
                 hashMap.put("addressId","0");
                 //请求数据
                 RetrofitUtil instance = RetrofitUtil.getInstance();
                 ApiService service = instance.createService();
-                Observable createOrder = service.getCreateOrder(hashMap);
+                Observable<CartBean> createOrder = service.getCreateOrder(hashMap);
                 createOrder.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer() {
+                        .subscribe(new Observer<CartBean>() {
                             @Override
                             public void onSubscribe(Disposable d) {
 
                             }
 
                             @Override
-                            public void onNext(Object value) {
-                                Toast.makeText(ShowActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                            public void onNext(CartBean value) {
+
                             }
 
                             @Override
                             public void onError(Throwable e) {
-                                Toast.makeText(ShowActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
+
                             }
 
                             @Override
@@ -71,6 +72,7 @@ public class ShowActivity extends AppCompatActivity {
 
                             }
                         });
+
             }
         });
 

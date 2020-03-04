@@ -29,5 +29,5 @@ public interface ApiService {
     Observable<CartBean> getShopping();
 
     @GET("order/verify/v1/createOrder")
-    Observable getCreateOrder(@QueryMap Map<String,String> param);
+    Observable<CartBean> getCreateOrder(@QueryMap Map<String,String> param);
 }
