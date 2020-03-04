@@ -39,8 +39,8 @@ public class RetrofitUtil {
                         //添加请求头
                         Request request = chain.request();
                         Request.Builder builder = request.newBuilder();
-                        builder.addHeader("userId","33417");
-                        builder.addHeader("sessionId","158285436508833417");
+                        builder.addHeader("userId","28055");
+                        builder.addHeader("sessionId","158331054145428055");
                         Request newBuild = builder.build();
                         Response proceed = chain.proceed(newBuild);
                         return proceed;

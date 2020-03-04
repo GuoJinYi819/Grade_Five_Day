@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShowActivity">
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></CheckBox>
+    <TextView
+        android:id="@+id/tvDZ"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text=" "
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+    </TextView>
+    <Button
+        android:id="@+id/btnDz"
+        android:text="获取收货地址"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </Button>
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:text="创建订单"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Button>
+</LinearLayout>

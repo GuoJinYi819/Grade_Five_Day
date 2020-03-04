@@ -1,5 +1,6 @@
 package com.bw.guojinyi.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,10 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 
 import com.bw.guojinyi.R;
+import com.bw.guojinyi.ShowActivity;
 import com.bw.guojinyi.adapter.ExpandableAdapter;
 import com.bw.guojinyi.adapter.RecyclerAdapter;
 import com.bw.guojinyi.base.BaseFragment;
@@ -37,6 +40,7 @@ public class Shopping_Fragment extends BaseFragment<ShoppingresenterImpl> implem
 
     private RecyclerView recycler;
     private ExpandableListView expandable_view;
+    private Button btnJS;
 
     @Override
     protected int initLayoutId() {
@@ -46,6 +50,7 @@ public class Shopping_Fragment extends BaseFragment<ShoppingresenterImpl> implem
     @Override
     protected void initView() {
         recycler = view.findViewById(R.id.recycelr);
+        btnJS = view.findViewById(R.id.btnJS);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recycler.setLayoutManager(linearLayoutManager);
@@ -64,6 +69,14 @@ public class Shopping_Fragment extends BaseFragment<ShoppingresenterImpl> implem
         //设置是厄齐
 //        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getContext());
 //        recycler.setAdapter(recyclerAdapter);
+        //跳转至结算页
+        btnJS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
