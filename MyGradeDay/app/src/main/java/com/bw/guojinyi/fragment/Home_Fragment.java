@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class Home_Fragment extends BaseFragment<BannerPresenterImpl> implements IBannerContract.IBannerView {
 
-   
+
     private XBanner xbanner;
 
     @Override
