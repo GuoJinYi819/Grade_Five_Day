@@ -1,11 +1,9 @@
 package com.bw.guojinyi.fragment;
 
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.widget.TableLayout;
 
 import com.bw.guojinyi.R;
-import com.bw.guojinyi.adapter.TabViewAdapter;
 import com.bw.guojinyi.base.BaseFragment;
 import com.bw.guojinyi.base.BasePresenter;
 

@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bw.guojinyi.bean.CartBean;
 import com.bw.guojinyi.bean.PayBean;
 import com.bw.guojinyi.net.ApiService;
 import com.bw.guojinyi.net.RetrofitUtil;

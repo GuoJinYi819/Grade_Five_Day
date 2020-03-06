@@ -1,14 +1,7 @@
 package com.bw.guojinyi.fragment;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -16,25 +9,14 @@ import com.bumptech.glide.Glide;
 import com.bw.guojinyi.R;
 import com.bw.guojinyi.base.BaseFragment;
 import com.bw.guojinyi.bean.BannerBean;
-import com.bw.guojinyi.bean.DataBean;
-import com.bw.guojinyi.bean.Objects;
 import com.bw.guojinyi.bean.ResultBean;
-import com.bw.guojinyi.bean.RxxpBean;
 import com.bw.guojinyi.mvp.BannerPresenterImpl;
 import com.bw.guojinyi.mvp.IBannerContract;
-import com.bw.guojinyi.net.ApiService;
-import com.bw.guojinyi.net.RetrofitUtil;
 import com.stx.xhb.xbanner.XBanner;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * ClassName: MyGradeDay
@@ -45,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class Home_Fragment extends BaseFragment<BannerPresenterImpl> implements IBannerContract.IBannerView {
 
-
+   
     private XBanner xbanner;
 
     @Override
