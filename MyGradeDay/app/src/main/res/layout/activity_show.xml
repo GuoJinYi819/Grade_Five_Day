@@ -6,29 +6,63 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ShowActivity">
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></CheckBox>
     <TextView
-        android:id="@+id/tvDZ"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:text=" "
+        android:text="请选择支付方式"
         android:layout_width="match_parent"
-        android:layout_height="30dp">
-
-    </TextView>
-    <Button
-        android:id="@+id/btnDz"
-        android:text="获取收货地址"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    </Button>
-
-    <Button
-        android:id="@+id/btnCreate"
-        android:text="创建订单"
+    </TextView>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="余额支付"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </CheckBox>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="微信支付"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </CheckBox>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="支付宝支付"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </CheckBox>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnZF"
+        android:text="立即支付768元"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
     </Button>

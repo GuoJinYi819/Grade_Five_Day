@@ -28,8 +28,6 @@ public class My_Fragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        tabLayout = view.findViewById( R.id.tabLayout );
-        viewPager = view.findViewById( R.id.viewPager );
 
     }
 

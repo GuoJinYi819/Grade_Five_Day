@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.guojinyi.bean.CartBean;
+import com.bw.guojinyi.bean.PayBean;
 import com.bw.guojinyi.net.ApiService;
 import com.bw.guojinyi.net.RetrofitUtil;
 
@@ -21,67 +22,50 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ShowActivity extends AppCompatActivity {
 
-    private TextView tvDZ;
-    private Button btnDz;
-    private Button btnCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
-        initView();
 
-        btnDz.setOnClickListener(new View.OnClickListener() {
+        Button btnZF = findViewById( R.id.btnZF );
+
+        btnZF.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvDZ.setText("新增收货地址");
-            }
-        });
-        //创建订单
-        btnCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("orderInfo","[{'commodityId':3,'amount':1},{'commodityId':5,'amount':1}]");
-                hashMap.put("totalPrice","520.55");
-                hashMap.put("addressId","0");
-                //请求数据
+
+                HashMap<String, String> param = new HashMap<>();
+                param.put( "orderId","2020030421045648528055" );
+                param.put( "payType","1" );
+
                 RetrofitUtil instance = RetrofitUtil.getInstance();
                 ApiService service = instance.createService();
-                Observable<CartBean> createOrder = service.getCreateOrder(hashMap);
-                createOrder.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer<CartBean>() {
+                Observable<PayBean> pay = service.getPay( param );
+                pay.subscribeOn( Schedulers.io() )
+                        .observeOn( AndroidSchedulers.mainThread() )
+                        .subscribe( new Observer<PayBean>() {
                             @Override
                             public void onSubscribe(Disposable d) {
 
                             }
 
                             @Override
-                            public void onNext(CartBean value) {
-
+                            public void onNext(PayBean value) {
+                                Toast.makeText( ShowActivity.this, "支付成功", Toast.LENGTH_SHORT ).show();
                             }
 
                             @Override
                             public void onError(Throwable e) {
-
+                                Toast.makeText( ShowActivity.this, "支付失败", Toast.LENGTH_SHORT ).show();
                             }
 
                             @Override
                             public void onComplete() {
 
                             }
-                        });
-
+                        } );
             }
-        });
-
-
+        } );
     }
 
-    private void initView() {
-        tvDZ = findViewById(R.id.tvDZ);
-        btnDz = findViewById(R.id.btnDz);
-        btnCreate = findViewById(R.id.btnCreate);
-    }
 }

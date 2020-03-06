@@ -16,7 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
-        android:text="提交订单"
+        android:text="去支付"
         android:layout_height="wrap_content">
 
     </Button>
